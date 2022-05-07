@@ -10,25 +10,25 @@ class ClientRequest extends FormRequest {
         "name" => "required",
         "email" => "required",
         "document" => "required",
-        "cellphone" => "sometimes",
-        "phone" => "sometimes",
-        "cep" => "sometimes",
-        "publicPlace" => "sometimes",
-        "number" => "sometimes",
-        "district" => "sometimes",
-        "city" => "sometimes",
-        "uf" => "sometimes",
-        "stateSub" => "sometimes",
-        "citySub" => "sometimes",
-        "coml" => "sometimes",
-        "shareCapital" => "sometimes",
-        "cnae" => "sometimes",
-        "iva" => "sometimes",
-        "snCode" => "sometimes",
-        "usernameSupervisor" => "sometimes",
-        "passwordSupervisor" => "sometimes",
-        "fees" => "sometimes",
-        "enabledCompany" => "sometimes"
+        "cellphone" => "nullable",
+        "phone" => "nullable",
+        "cep" => "nullable",
+        "publicPlace" => "nullable",
+        "number" => "nullable",
+        "district" => "nullable",
+        "city" => "nullable",
+        "uf" => "nullable",
+        "stateSub" => "nullable",
+        "citySub" => "nullable",
+        "coml" => "nullable",
+        "shareCapital" => "nullable",
+        "cnae" => "nullable",
+        "iva" => "nullable",
+        "snCode" => "nullable",
+        "usernameSupervisor" => "nullable",
+        "passwordSupervisor" => "nullable",
+        "fees" => "nullable",
+        "enabledCompany" => "nullable"
     ];
 
     public function authorize() {
@@ -50,7 +50,7 @@ class ClientRequest extends FormRequest {
                 break;
             case "delete":
                 return [
-                    "id" => "required"
+                    "ids" => "required"
                 ];
                 break;
             default:

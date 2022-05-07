@@ -11,5 +11,5 @@ Route::group([
     Route::get("/{id}", [ClientController::class, "find"]);
     Route::post("/", [ClientController::class, "create"]);
     Route::patch("/", [ClientController::class, "alter"]);
-    Route::delete("/", [ClientController::class, "delete"]);
+    Route::post("/delete", [ClientController::class, "delete"]);
 });

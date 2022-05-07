@@ -6,6 +6,7 @@ use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ClientController extends Controller {
 
@@ -72,17 +73,16 @@ class ClientController extends Controller {
     public function delete(ClientRequest $request) {
         $data = $request->validated();
      
-        $client = Client::find($data["id"]);
-        if ($client == null) return response()->json([
-            "message" => "Cliente não encontrado"
-        ], 404);
+        if (is_array($data["ids"])) {
+            foreach ($data["ids"] as $id) {
+                $client = Client::find($id);
+                $client->delete();
+            }
+        }
 
-        if ($client->delete()) return response()->json([
+        return response()->json([
             "message" => "Cliente deletado com sucesso"
         ], 200);
-        else return response()->json([
-            "message" => "Falha ao deletar cliente"
-        ], 500);
     }
 
 }
